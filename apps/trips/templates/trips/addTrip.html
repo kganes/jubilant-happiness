@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Buddy | Add Trip</title>
+	{%load staticfiles%}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'trips/css/style.css' %}">
+</head>
+<body>
+	<div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="{% url 'login_index' %}">Home</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- Bootstrap container -->
+	<div class="container">
+	<!-- This is the only row in the login screen -->
+		<div class="row loginScreen">
+			<div class="col-xs-3"></div>
+			<div id="loginBox" class="col-xs-6">
+				{% if messages%}
+				<ul class="messages">
+					{%for message in messages%}
+					<li>{{message}}</li>
+					{%endfor%}
+				{%endif%}
+				<form action="{%url 'travel_createTrip'%}" method="POST" class="loginRegisterForm">
+				{%csrf_token%}
+					<ul>
+						<li>
+							<fieldset class="form-group">
+								<label>Destination</label>
+								<input type="text" name="destination">
+							</fieldset>
+						</li>
+					
+						<li>
+							<fieldset class="form-group">
+								<label>Description</label>
+								<input type="text" name="description">
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="form-group">
+								<label>Travel Date From</label>
+								<input type="date" name="start_date">
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="form-group">
+								<label>Travel Date To</label>
+								<input type="date" name="end_date">
+							</fieldset>
+						</li>
+					</ul>
+					<div class="centered">
+						<fieldset class="form-group">
+							<button class="btn btn-primary" type="submit">Add Trip</button>
+						</fieldset>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-3"></div>
+		</div>
+	</div>
+	<div class="footer">
+	<p>&copy; 2016 Travel Buddy LLC, a division of Traveling Ninjas Inc.</p>
+	</div>
+</body>
+</html>

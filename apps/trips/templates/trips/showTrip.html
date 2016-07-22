@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Buddy | Add Trip</title>
+	{%load staticfiles%}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'trips/css/style.css' %}">
+</head>
+<body>
+	<div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="{% url 'login_index' %}">Home</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- Bootstrap container -->
+	<div class="container">
+    	<div class="row">
+	        <div class="col-xs-4"></div>
+	        <div class="col-xs-4">
+	            <div class="panel panel-default">
+	                <div class="panel-heading">{{ trip.destination }}</div>
+	                <table class="table">
+	                    <tr>
+	                        <td>Planned By:</td>
+	                        <td>{{trips.owner.name}}</td>
+	                    </tr>
+	                    <tr>
+	                        <td>Description:</td>
+	                        <td>{{trips.description}}</td>
+	                    </tr>
+	                    <tr>
+	                        <td>Travel Date From:</td>
+	                        <td>{{trips.start_date}}</td>
+	                    </tr>
+	                    <tr>
+	                        <td>Travel Date To:</td>
+	                        <td>{{trips.end_date}}</td>
+	                    </tr>
+	                    
+	                </table>
+	            </div>
+	        </div>
+	        
+        </div>
+        <div class="row">
+	        <div class="col-xs-3">
+	        	
+	        	<a href="/trips" class="btn btn-default" role="button">Back to Dashboard</a>
+	        </div>
+	        <div class="col-xs-3">
+	        	<h3>Other users joinin this trip:</h3>
+	        	
+	        		{{ trips.traveler.name }}
+	        </div>
+        </div>
+
+
+    </div>
+	<div class="footer">
+	<p>&copy; 2016 Travel Buddy LLC, a division of Traveling Ninjas Inc.</p>
+	</div>
+</body>
+</html>
